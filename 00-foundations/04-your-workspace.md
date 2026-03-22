@@ -43,7 +43,7 @@ There are really only six commands you'll use regularly:
 
 `ls` - **List.** Shows you all the files and folders in your current location. (On Windows PowerShell, `ls` also works, or you can use `dir`.)
 
-`cd` - **Change Directory.** Moves you into a different folder. `cd Documents` moves you into the Documents folder. `cd ..` moves you back up one level. `cd ~` takes you back to your home folder no matter where you are.
+`cd` - **Change Directory.** Moves you into a different folder. `cd Documents` moves you into the Documents folder. `cd ..` moves you back up one level. `cd ~` takes you back to your home folder no matter where you are. (The `~` symbol is shorthand for your home directory. On Mac and Linux that's something like `/home/yourname`. On Windows it's `C:\Users\yourname`. You'll see `~` used throughout this curriculum as a shortcut.)
 
 `mkdir` - **Make Directory.** Creates a new folder. `mkdir my-project` creates a folder called `my-project`.
 
@@ -60,14 +60,14 @@ Open your terminal and type these commands, one at a time, pressing Enter after 
 ```
 pwd
 ls
-mkdir guild-projects
-cd guild-projects
+mkdir test-folder
+cd test-folder
 pwd
 ls
 cd ..
 ```
 
-You just checked where you were, looked at what was there, created a folder, moved into it, confirmed you moved, saw it was empty (because you just created it), and moved back out. That's the core loop of navigating your computer from the terminal. Everything else builds on this.
+You just checked where you were, looked at what was there, created a folder, moved into it, confirmed you moved, saw it was empty (because you just created it), and moved back out. That's the core loop of navigating your computer from the terminal. Everything else builds on this. (You can delete `test-folder` later. It was just for practice.)
 
 ## Tool 3: An AI Agent
 

@@ -60,7 +60,7 @@ Some languages are built for specific problem areas:
 
 **SQL** - Not a programming language in the traditional sense, but the universal language for talking to databases. Every application that stores data in a database uses SQL somewhere. Your agent will write plenty of it.
 
-**HTML/CSS** - The building blocks of everything you see in a web browser. HTML structures the content, CSS styles it. You built your bookmark manager with these.
+**HTML/CSS** - The building blocks of everything you see in a web browser. HTML structures the content, CSS styles it. Your first project in Phase 1 uses these.
 
 ## How to Choose
 
@@ -88,7 +88,7 @@ We chose Rust as the guild's default language for specific reasons:
 
 **The agent handles the hard parts.** The main argument against Rust has always been its learning curve. But you're not memorizing the borrow checker rules. The agent knows them. Your job is to describe what you want, verify the output, and understand the compiler's feedback when something is rejected. The curve is real for people writing Rust by hand. It's much flatter when you're directing an agent.
 
-This does not mean Rust is the right choice for everything. Your bookmark manager was HTML, CSS, and JavaScript, and that was the right call. A data analysis project might be Python. A mobile app might be Swift. Part of being a good practitioner is knowing when to reach for a different tool. But for the projects in this curriculum, Rust is our default, and the skills you develop working with it will transfer to any language.
+This does not mean Rust is the right choice for everything. Your first project (a bookmark manager in Phase 1) will use HTML, CSS, and JavaScript, and that's the right call for a first build. A data analysis project might be Python. A mobile app might be Swift. Part of being a good practitioner is knowing when to reach for a different tool. But for the projects in this curriculum, Rust is our default, and the skills you develop working with it will transfer to any language.
 
 ## What You Don't Need to Know
 
