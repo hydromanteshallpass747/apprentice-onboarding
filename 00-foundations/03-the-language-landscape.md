@@ -109,6 +109,7 @@ You won't start building real Rust projects until Phase 2. But there's no reason
 Open your terminal and run:
 
 ```
+mkdir -p ~/guild-projects/scratch
 cd ~/guild-projects/scratch
 cargo new hello-guild
 cd hello-guild
