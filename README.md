@@ -2,9 +2,9 @@
 
 **A structured path from zero to agentic AI practitioner.**
 
-You don't need to learn to code. You don't need to memorize syntax. You don't need a CS degree. Those things are the cuneiform of our era: once essential, now automated.
+You want to build things with AI. Real things: tools you'll use, projects you can show, skills that make you more capable than you were before. This path gets you there.
 
-What you *do* need is to **think clearly**, **communicate intent**, **verify results**, and **refine through iteration**. These are human skills. They always have been.
+Whether you're a complete beginner, a student supplementing your coursework, or a working professional adding agentic development to your skillset, the core of this program is the same: **build real projects, get honest feedback, and improve through iteration.** By the end, you'll have a portfolio of working software and the skills to keep building on your own.
 
 This learning path is built on a methodology called **Verification Driven Development via Iterative Adversarial Refinement (VDD/IAR)**. In plain language: define what success looks like *before* you build, use AI agents to build it, stress-test the results, and improve through honest critique. Every phase practices that loop.
 
@@ -14,7 +14,7 @@ The guild's default language is **Rust**. Not because it's the easiest, but beca
 
 ## How This Path Works
 
-This is a guild, not a school. You advance by **showing your work**, not by passing tests.
+This is a guild. You advance by **showing your work**. Each phase builds on the last, and you earn recognition at every milestone.
 
 There are three tiers:
 
@@ -103,10 +103,18 @@ Your portfolio isn't just the finished code. It's the *entire journey*: the thin
 
 ---
 
+## What You'll Walk Away With
+
+- **Working software** you built yourself, from design to deployment
+- **A public portfolio** that demonstrates your skills to employers, collaborators, and clients
+- **Phase completion badges** recognizing your progress at each milestone
+- **A Journeyman certificate** when you complete the full path
+- **A methodology** (VDD/IAR) you can apply to any project, in any language, for the rest of your career
+
 ## Philosophy
 
-This path exists because the world is changing and most education hasn't caught up. Coding bootcamps teach you to write syntax that AI can now generate in seconds. Universities teach theory that takes years to reach practical application. Neither prepares you for the skill that actually matters: **directing intelligent systems to build things that work**.
+This path fills a gap. Traditional education teaches you theory and fundamentals. That knowledge is valuable and this program builds on it. What's been missing is structured training in the practical skill of **directing intelligent systems to build things that work.** Whether you're coming from a CS degree, a bootcamp, self-teaching, or no technical background at all, this path adds a capability that didn't exist five years ago.
 
-We don't test you. We don't certify you. We don't hand you a credential you can cram for and forget. We ask you to build things, submit them for honest critique, and improve. The portfolio you build here is proof that can't be faked, because the whole process is visible.
+We ask you to build things, submit them for honest critique, and improve. The portfolio you build here is proof that can't be faked, because the whole process is visible.
 
 Welcome to the guild.

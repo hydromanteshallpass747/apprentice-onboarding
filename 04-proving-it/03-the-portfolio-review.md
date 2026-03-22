@@ -94,6 +94,7 @@ Your mentoring reflection and your PR reviews on other people's work show whethe
 
 If the evaluation goes well, you're a journeyman. What changes:
 
+- You receive your **Journeyman certificate** from the guild
 - You're trusted to run full VDD cycles on real guild projects independently
 - You can mentor apprentices as an official part of the guild structure
 - You have a seat in guild discussions about methodology, tooling, and direction
@@ -101,11 +102,23 @@ If the evaluation goes well, you're a journeyman. What changes:
 
 If the evaluation suggests you need more work, you'll get specific feedback about what to strengthen. This isn't failure. It's the adversarial refinement loop applied to your own development. Fix what's identified, improve what's suggested, and submit again.
 
-## The Real Credential
+## Recognition
 
-The guild doesn't issue certificates or badges. Your portfolio URL is your credential. It's a public body of work that anyone can inspect: employers, collaborators, other guilds. It can't be faked because the entire process is visible. The commit history, the issue tracking, the review cycles, the retrospectives. It's all there.
+The guild recognizes your progress at every stage. You earn badges for completing each phase:
 
-This is more valuable than a certificate from a bootcamp. A certificate says "this person sat through a course." A portfolio says "this person built real things with discipline, survived honest critique, and can prove every step of the journey." One of those is easy to fake. The other isn't.
+- **Phase 0: Foundation Set** - You've set up your tools and understand the landscape
+- **Phase 1: First Build** - You've built working software with an agent
+- **Phase 2: Methodology** - You've practiced VDD and issue tracking
+- **Phase 3: Real-World Ready** - You've contributed to a shared codebase, handled APIs, security, and shipping
+- **Phase 4: Journeyman** - You've completed the capstone, mentored someone, and submitted your portfolio
+
+These are real markers of real accomplishment. Display them, share them, be proud of them. You earned each one by doing the work.
+
+## The Portfolio
+
+Your portfolio URL is the strongest part of your credential. It's a public body of work that anyone can inspect: employers, collaborators, other guilds. The commit history, the issue tracking, the review cycles, the retrospectives. It's all there, and it can't be faked because the entire process is visible.
+
+A certificate tells someone you completed a program. A portfolio shows them *how*. You have both.
 
 You started this path with the ability to think and communicate. You end it with a body of work that proves you can direct intelligent systems to build things that work, and the process discipline to do it reliably. Everything else you'll learn on the job, because you've proven you know how to learn.
 

@@ -1,12 +1,12 @@
 # The New Literacy
 
-## You Are Not Learning to Code
+## What This Path Is For
 
-This path will not teach you programming syntax. Not because it's too hard for you (it isn't), but because it's no longer the skill that matters. An AI agent can generate syntactically correct code in any programming language in seconds. Memorizing that syntax would be like memorizing the Illiad when you have a printing press in front of you.
+You have an idea for something you want to build. Maybe it's a tool for your job, a side project, a small business website, or something you've been imagining for years but didn't have the technical skills to make real. This path teaches you how to make it real, using AI agents as your building partner.
 
-What the printing press didn't replace was the ability to *think clearly and communicate ideas*. The press didn't write the books. People did. It just removed the bottleneck of hand-copying manuscripts. AI agents work the same way: they remove the bottleneck of translating ideas into code. But someone still needs to have the ideas, articulate them clearly, and verify that what came out matches what was intended.
+You won't be memorizing programming syntax. An AI agent can generate syntactically correct code in any programming language in seconds. Instead, you'll develop the skills that actually determine whether what gets built is any good: clear thinking, specific communication, and the discipline to verify that what came out matches what you intended.
 
-That someone is you.
+If you have a traditional CS background, this adds a new capability on top of what you already know. If you're coming from a bootcamp, this fills in the methodology side. If you have no technical background at all, this is your on-ramp. The starting point differs but the destination is the same: you'll be able to direct AI agents to build working software, and prove it with a portfolio of real projects.
 
 ## What You Are Learning
 
@@ -48,13 +48,23 @@ The agent builds something specific, usable, and close to what you actually need
 
 The difference isn't technical knowledge. It's clarity of thought and specificity of communication.
 
+## What You'll Build
+
+This isn't theoretical. By the end of this path, you will have:
+
+- **A bookmark manager** you built from scratch in your first week
+- **A command-line tool** written in Rust
+- **Contributions to a shared open-source project** used by other guild members
+- **3-5 projects of your own choosing** that solve problems you actually care about
+- **A capstone project** that demonstrates everything you've learned
+
+All of it will be in a public portfolio with full history: the design documents, the code, the testing, the feedback you received, and how you responded to it. This isn't a certificate that says you completed a course. It's a body of work that shows what you can do.
+
 ## What Comes Next
 
 In the rest of Phase 0, you'll set up the basic tools you need: a text editor, a terminal, and git for tracking your work. None of this requires coding knowledge. Think of it as setting up your workshop before you start building.
 
-Then in Phase 1, you'll learn the specifics of communicating with agents: how they process your instructions, what makes a good prompt versus a bad one, how to give context, and how to break problems into pieces an agent can handle.
-
-By the end of the Apprentice path, you'll have built real, working projects. Not tutorials. Not exercises. Real things that do real things, documented start to finish, reviewed by the community, and refined through iteration.
+Then in Phase 1, you'll start talking to agents and build your first project. By the end of Phase 1, you'll have working software in a browser that you directed an AI to build.
 
 You already have everything you need to start. You can think. You can communicate. You can tell when something works and when it doesn't. Everything else is practice.
 
