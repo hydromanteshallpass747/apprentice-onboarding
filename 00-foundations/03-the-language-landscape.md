@@ -101,3 +101,43 @@ What you need is the ability to have a conversation like this with your agent:
 The agent will recommend something sensible. You'll have enough context from this chapter to evaluate whether that recommendation makes sense. And if your employer or client says "we use Java," you'll know what that means and you'll be able to direct the agent just as effectively.
 
 The language is the agent's problem. The thinking is yours.
+
+## Try It: Your First Rust Program
+
+You won't start building real Rust projects until Phase 2. But there's no reason to wait that long to meet the compiler. Let's do something small right now so Rust isn't a mystery when you get there.
+
+Open your terminal and run:
+
+```
+cd ~/guild-projects/scratch
+cargo new hello-guild
+cd hello-guild
+```
+
+`cargo new` just created a Rust project for you. Take a look at what's inside:
+
+```
+ls src/
+```
+
+There's one file: `main.rs`. That's your program. Now run it:
+
+```
+cargo run
+```
+
+You should see `Hello, world!` in your terminal. Cargo compiled your program and ran it. That's the loop you'll use for every Rust project: write code, `cargo run`, see the result.
+
+Now open a conversation with your agent and say:
+
+> "I have a Rust project at ~/guild-projects/scratch/hello-guild. Change main.rs so it asks the user for their name, then prints 'Welcome to the guild, [name]!' Use standard input to read the name."
+
+The agent will modify `main.rs`. Run `cargo run` again. Type your name when prompted. You just directed an agent to write Rust and verified the result. That's the entire workflow.
+
+Now try one more thing. Tell the agent:
+
+> "Add a loop so it keeps asking for names and greeting people until someone types 'quit'."
+
+Run it. Test it. Type a few names, then type "quit." Does it exit cleanly? What happens if you type nothing and just press enter? What happens if you type a very long string? You're already practicing verification and edge-case thinking, and you've only been writing Rust for five minutes.
+
+When you're done, this project lives in your `scratch/` folder. It's not a portfolio piece. It's just proof that you've touched the compiler and it didn't bite. When Phase 2 asks you to build a real CLI tool in Rust, you'll know the basics already: `cargo new`, `cargo run`, and directing an agent to write the code.
