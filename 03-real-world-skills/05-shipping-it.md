@@ -234,22 +234,60 @@ This produces an optimized binary in `target/release/`. On GitHub, go to your re
 
 ### Continuous Integration (CI)
 
-CI means your tests run automatically every time you push code. You don't have to remember to run them. A service (usually GitHub Actions) checks out your code, builds it, runs the tests, and tells you if anything failed.
+**What CI is.** Continuous Integration is a service that runs your build and tests automatically every time you push code or open a pull request. Instead of you remembering to run `cargo test` before a commit, a fresh virtual machine spins up in the cloud, clones your repo, runs the commands you specified, and reports back green (passed) or red (failed). The most common CI service for GitHub projects is **GitHub Actions**, which is built into github.com and free for public repositories.
 
-Here's what a basic CI workflow looks like. Ask your agent:
+**Why it exists.** You'll catch problems in CI that you'd never find locally:
+- Code that compiles on Linux but not Windows (path separator issues, missing dependencies)
+- Tests that pass on your machine but fail on a clean environment because you have something installed locally that isn't in the project
+- Formatting inconsistencies between different contributors
+- Dependencies that updated and broke something while you weren't looking
+
+**The folder convention.** GitHub Actions reads workflow files from a specific magic folder: `.github/workflows/` in your repository root. Any `.yml` file in that folder is treated as a workflow. You can have multiple workflows (one for tests, one for releases, one for docs). The folder and the filename pattern are what turn an ordinary file into something GitHub runs — there's no other registration step.
+
+**The shape of a workflow file.** Workflows are written in YAML, a data format similar in intent to JSON but using indentation instead of braces. You saw JSON back in the foundations chapter; YAML conveys the same kind of nested key-value data with different punctuation. Here's the smallest useful Rust workflow:
+
+```yaml
+name: CI
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: dtolnay/rust-toolchain@stable
+      - run: cargo build --verbose
+      - run: cargo test --verbose
+      - run: cargo clippy -- -D warnings
+      - run: cargo fmt --check
+```
+
+The three top-level keys:
+
+- **`name`** — a label for this workflow that shows up in the GitHub Actions tab.
+- **`on`** — the triggers. This workflow runs on any push and any pull request. Other common triggers: `schedule` (cron), `workflow_dispatch` (manual button), `release` (when you publish a release).
+- **`jobs`** — the actual work, organized as one or more named jobs. Each job picks a **runner** (`ubuntu-latest`, `macos-latest`, `windows-latest` are free for public repos) and runs a list of **steps** in order. Steps are either `uses` (call a pre-built action from the marketplace, like `actions/checkout@v4` which clones your repo) or `run` (execute a shell command).
+
+If any `run` step exits non-zero, the job fails and CI reports red. Otherwise it reports green.
+
+**Indentation matters in YAML.** Two-space indent is the convention. Tabs will break the file. One misaligned key breaks the whole workflow. The error messages are usually clear about which line is the problem.
+
+**Setting it up for your project.** Ask your agent:
 
 > "Create a GitHub Actions workflow file at `.github/workflows/ci.yml`. It should:
 > - Run on every push and every pull request
-> - Test on Ubuntu, macOS, and Windows
+> - Test on Ubuntu, macOS, and Windows (use a matrix strategy)
 > - Run cargo build, cargo test, cargo clippy -- -D warnings, and cargo fmt --check
 > - Use the stable Rust toolchain"
 
-The agent will generate the YAML file. Commit it, push, and check the "Actions" tab on your GitHub repo. You'll see the workflow running. Green checkmarks mean everything passed. Red X means something failed, and you can click through to see the exact error.
+The agent will generate a YAML file more sophisticated than the one above (with a matrix of operating systems). Create the file, commit it, push.
 
-Once CI is set up, you'll catch problems you'd never find locally:
-- Code that compiles on Linux but not Windows (path separator issues, missing dependencies)
-- Tests that pass on your machine but fail on a clean environment (because you have something installed locally that isn't in the project)
-- Formatting inconsistencies between different developers
+**Checking the result.** Go to your repository on github.com and click the **Actions** tab at the top. You'll see a list of recent workflow runs — the most recent is the one from the push you just made. A yellow dot means pending, a green checkmark means passed, a red X means failed. Click into any run to see the step-by-step log. If a step failed, click the red step to see the exact output — Rust compile errors, test failures, and clippy lints are all there verbatim.
+
+The debugging loop is: fail, read the log, push a fix, check the new run. You'll get fast at this once you've done it a few times.
 
 **CI is not optional for shipped software.** If other people depend on your tool, automated testing on every change is the minimum bar. Set it up early. The earlier it catches a problem, the cheaper it is to fix.
 
@@ -265,28 +303,79 @@ This is how mature Rust projects distribute binaries. The user downloads the one
 
 If your tool is useful to other Rust developers, you can publish it to [crates.io](https://crates.io), Rust's package registry. Then anyone can install it with `cargo install your-tool-name`.
 
-This has higher standards than pushing to GitHub:
+**Publishing is optional.** Most apprentice projects should live on GitHub as source code and stop there. Publish only when the tool is mature, useful to others, and you're ready to commit to maintaining it. Once a version is on crates.io, you cannot take it back.
 
-**Metadata must be complete.** Your `Cargo.toml` needs: `description`, `license`, `repository`, `keywords`, and `categories`. These show up on the crates.io listing page.
+**Higher standards than pushing to GitHub:**
+
+**Metadata must be complete.** Your `Cargo.toml` needs: `description`, `license`, `repository`, `keywords`, and `categories`. These show up on the crates.io listing page. Without them, `cargo publish` refuses to run.
 
 **Documentation must exist.** A README at minimum. Ideally, doc comments on your public API so [docs.rs](https://docs.rs) can generate reference documentation automatically.
 
-**Tests must pass.** Run `cargo test` before every publish. Shipping broken code to a public registry is bad form and you can't unpublish.
+**Tests must pass.** Run `cargo test` before every publish. Shipping broken code to a public registry is bad form and **you cannot unpublish it**.
 
-**Versions are permanent.** Once you publish version 0.1.0, you can't delete it or modify it. You can publish 0.1.1 with a fix, but the old version stays. Think before you publish.
+**Versions are permanent.** Once you publish version 0.1.0, you cannot delete it or modify it. You can publish 0.1.1 with a fix, but the old version stays. The only recovery mechanism is called **yank** — `cargo yank --vers 0.1.0` marks a bad version as "don't use this for new projects" but leaves it installable for anyone who already depends on it. Yanking is not deletion. Treat publishing as irreversible and plan accordingly.
 
-**Dry run first:**
+**The name is globally unique and first-come.** `cargo publish` claims the crate name forever. Pick something you'll be happy with in five years.
+
+#### Step-by-step publishing walkthrough
+
+Assume you have a mature tool ready to ship. Here's the full path from zero to published.
+
+**1. Create a crates.io account.** Go to [crates.io](https://crates.io) and click **Log in with GitHub** in the top right. This signs you in via GitHub OAuth — you don't create a separate password. The first sign-in creates your account automatically.
+
+**2. Verify your email address.** crates.io requires a verified email before you can publish. Click your profile → **Account Settings** → add an email address if none is listed → click the verification link in the email that arrives. Publishing will fail with a clear error if this step is skipped.
+
+**3. Generate an API token.** On crates.io, go to **Account Settings** → **API Tokens** → **New Token**. Name it something like "my laptop" and leave the default scopes (allow publish-update). Click **Create**. The token is shown once — copy it immediately.
+
+**4. Log cargo into crates.io with the token.**
+```
+cargo login <paste-your-token>
+```
+
+This writes the token to `~/.cargo/credentials.toml`. Cargo will use it for all future publishes from this machine. You only do this once per computer. If you ever lose the token, revoke it on crates.io and generate a new one.
+
+**5. Fill out your Cargo.toml metadata.** Open `Cargo.toml` and make sure the `[package]` section has all the required fields:
+
+```toml
+[package]
+name = "my-tool"
+version = "0.1.0"
+edition = "2024"
+description = "A one-sentence summary of what the tool does"
+license = "MIT OR Apache-2.0"
+repository = "https://github.com/YOUR-USERNAME/my-tool"
+readme = "README.md"
+keywords = ["cli", "productivity"]
+categories = ["command-line-utilities"]
+```
+
+Pick keywords and categories carefully — crates.io uses them for search. You can find the full category list at [crates.io/categories](https://crates.io/categories).
+
+**6. Dry run.** Always do this before publishing:
 ```
 cargo publish --dry-run
 ```
 
-This checks everything without actually publishing. Fix any warnings or errors it reports. Then when you're ready:
+This packages the crate as if you were publishing, runs the checks, and reports any problems without actually sending anything to crates.io. Fix every warning. Common issues: missing README file referenced in Cargo.toml, files larger than the size limit, unrelated files accidentally included.
 
+**7. Publish.**
 ```
 cargo publish
 ```
 
-You'll need a crates.io account linked to your GitHub. The first time you run `cargo publish`, it will walk you through the authentication.
+It uploads the crate tarball, crates.io indexes it, and within a minute `cargo install my-tool` works for anyone. Your crate page appears at `crates.io/crates/my-tool`, and docs.rs starts building your reference docs automatically.
+
+**8. Tag the release in git.** Create and push a git tag that matches the version you just published:
+```
+git tag v0.1.0
+git push origin v0.1.0
+```
+
+This makes it easy for future-you and your users to find the exact code that corresponds to any published version.
+
+#### Publishing follow-up versions
+
+To publish a new version later, bump the `version` field in `Cargo.toml` (following semantic versioning), commit, `cargo publish --dry-run`, `cargo publish`, tag, push. That's the loop.
 
 ### The Packaging Checklist
 

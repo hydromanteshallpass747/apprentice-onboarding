@@ -40,6 +40,7 @@ This repository contains the **Apprentice Learning Path**: everything you need t
 3. [The Language Landscape](00-foundations/03-the-language-landscape.md) - Programming languages in conceptual terms
 4. [Your Workspace](00-foundations/04-your-workspace.md) - Setting up the tools you'll use every day
 5. [Git: Just Enough](00-foundations/05-git-just-enough.md) - How to save, share, and track your work
+6. [The Guild](00-foundations/06-the-guild.md) - What "the guild" actually is and how you participate today
 
 ### Phase 1: Talking to Agents
 *How to communicate with AI so it builds what you actually want.*
@@ -56,7 +57,8 @@ This repository contains the **Apprentice Learning Path**: everything you need t
 *The discipline that makes the output actually good.*
 
 1. [How We Build](02-the-methodology/01-how-we-build.md) - VDD and the adversarial refinement loop
-2. [Tracking Your Work](02-the-methodology/02-tracking-your-work.md) - Issue tracking, building your own, then using Chainlink
+2. [Tracking Your Work](02-the-methodology/02-tracking-your-work.md) - Issue tracking, building your own, then using crosslink
+3. [Branches and Pull Requests](02-the-methodology/03-branches-and-pull-requests.md) - The workflow for contributing to shared code
 
 ### Phase 3: Real-World Skills
 *Working the way professionals work.*
@@ -121,3 +123,24 @@ This path fills a gap. Traditional education teaches you theory and fundamentals
 We ask you to build things, submit them for honest critique, and improve. The portfolio you build here is proof that can't be faked, because the whole process is visible.
 
 Welcome to the guild.
+
+---
+
+## Glossary
+
+A one-stop reference for acronyms and guild-specific terms you'll see throughout the curriculum. Each term is also defined on first use in the chapter where it appears; this is just the quick lookup.
+
+- **VDD** — **Verification Driven Development.** The guild's core methodology: define what success looks like before you build, use agents to build it, then check the result against the definition. Covered in depth in Phase 2.
+- **IAR** — **Iterative Adversarial Refinement.** The second half of the methodology: after the initial build works, stress-test it through honest critique and improve through iteration. VDD and IAR together form the full loop.
+- **CLI** — **Command-Line Interface.** A program you run by typing its name in the terminal, like `git`, `cargo`, or `crosslink`, instead of clicking icons in a window.
+- **PR** — **Pull Request.** A formal proposal to merge a branch of code into another branch, usually hosted on GitHub. Covered in the [Branches and Pull Requests](02-the-methodology/03-branches-and-pull-requests.md) chapter.
+- **MCP** — **Model Context Protocol.** An open standard that lets AI agents connect to external services through purpose-built servers, so the agent can call tools directly instead of writing integration code each time. Covered in Phase 3.
+- **CI** — **Continuous Integration.** A service (usually GitHub Actions) that automatically builds and tests your code every time you push. Covered in Phase 3 Shipping chapter.
+- **PAT** — **Personal Access Token.** A limited-scope credential you generate on GitHub to authenticate from the command line, in place of your account password. Covered in the [Git: Just Enough](00-foundations/05-git-just-enough.md) chapter.
+- **MSRV** — **Minimum Supported Rust Version.** The oldest version of Rust a given crate or project is tested against. You'll see this in Cargo.toml files.
+- **JSON** — **JavaScript Object Notation.** A plain-text format for structured data (objects, lists, numbers, strings). Introduced in [What Code Actually Is](00-foundations/02-what-code-actually-is.md).
+- **YAML** — A sibling format to JSON used for configuration files (like GitHub Actions workflows). Same kind of data, different punctuation.
+- **The Guild** — The community of apprentices, journeymen, and masters using this curriculum. Some of its infrastructure (a chat server, mentor matching, the toolkit) is in progress; see [The Guild](00-foundations/06-the-guild.md) for the current state.
+- **The Adversary** — A reviewer (human or AI) whose job is to find every weakness in your work. Central to the IAR half of the methodology.
+- **Design doc** — A short document you write (usually with agent help) that defines what you're building before any code exists. Shows up in nearly every project in the curriculum.
+- **Epic / bead-string / subissue** — Issue-tracking terms from Phase 2. An epic is a large parent issue, subissues are smaller pieces of work that roll up to it, and "bead-string" is the guild's name for the decomposition pattern where you chain small verified pieces into a larger working whole.

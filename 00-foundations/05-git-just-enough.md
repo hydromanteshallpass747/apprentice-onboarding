@@ -51,7 +51,7 @@ Here's everything you need to know about git, as seven commands. Each one gets a
 **When you use it:** When you start a new project from scratch.
 
 ```
-cd ~/guild-projects/portfolio
+cd ~/guild-projects/scratch
 mkdir my-first-project
 cd my-first-project
 git init
@@ -120,7 +120,49 @@ The `-m` flag means "message." The text in quotes describes what this save point
 git push
 ```
 
-The first time you push a new project, git might ask you to set up the connection to GitHub. It'll give you instructions. Follow them, or ask your agent for help. After the first time, `git push` just works.
+The first time you push, GitHub needs to verify that you're really you. GitHub stopped accepting regular account passwords for git operations in 2021, so there's a one-time setup step. Don't skip past this — it's the single most common place beginners get stuck on git, and getting it right now saves an hour of confusion later. See the next section for the walkthrough.
+
+### One-Time Setup: Authenticating with GitHub
+
+You have two options for proving your identity to GitHub from the terminal. Pick one and follow it through. **The Personal Access Token (PAT) path is easier for beginners**, so that's what we'll walk through here. The SSH key path is shown at the end for anyone who already prefers it.
+
+**Personal Access Token (recommended)**
+
+A Personal Access Token is a long password-like string that you create on GitHub and use in place of your account password for git operations. Think of it as a dedicated password just for the command line.
+
+1. Go to [github.com](https://github.com) and sign in.
+2. Click your profile picture in the top right → **Settings**.
+3. Scroll all the way down the left sidebar and click **Developer settings**.
+4. Click **Personal access tokens** → **Tokens (classic)**.
+5. Click **Generate new token** → **Generate new token (classic)**. (GitHub may prompt you to confirm your account password.)
+6. In the **Note** field, type something like "my laptop" so future-you remembers what this token is for.
+7. Under **Expiration**, pick something reasonable. 90 days is the default and is fine.
+8. Under **Select scopes**, check the box for `repo`. That's the only scope you need. Don't check anything else.
+9. Scroll to the bottom and click **Generate token**.
+10. GitHub shows the token once, as a long string starting with `ghp_`. **Copy it immediately** and paste it somewhere safe temporarily (a password manager is ideal, a sticky note is fine for the next few minutes). **Once you leave this page you cannot see the token again** — GitHub only shows it once. If you lose it, you just generate a new one.
+
+Now push for the first time. In your terminal:
+
+```
+git push
+```
+
+Git will prompt for your **username** (your GitHub username) and your **password** (paste the token you just copied, not your account password). On most systems, git stores the token in a "credential helper" after the first successful push, so you only do this once per computer.
+
+**You know it worked when:** the push completes with no error, and refreshing your repository on github.com shows your commits.
+
+**Common errors and what they mean:**
+
+- `remote: Support for password authentication was removed on August 13, 2021.` You used your account password instead of a Personal Access Token. Go back and paste the token.
+- `remote: Permission to USER/REPO.git denied to OTHER_USER.` The token belongs to a different GitHub account than the one that owns the repo. Double-check which account you signed into on github.com when you created the token.
+- `fatal: Authentication failed for 'https://github.com/...'` Usually means the token was wrong (typo when pasting) or expired. Generate a fresh token and try again.
+- Terminal shows no feedback when you paste the token. That's normal — terminals silently accept pasted passwords without showing dots or characters. Paste and press Enter.
+
+**SSH keys (alternative, for later)**
+
+If you already know how to use SSH keys, or you want to set them up later instead of tokens, the process is: generate a key pair with `ssh-keygen -t ed25519`, copy the contents of `~/.ssh/id_ed25519.pub` into GitHub → Settings → SSH and GPG keys → New SSH key, then change your repository's remote URL from `https://github.com/USER/REPO.git` to `git@github.com:USER/REPO.git`. This is nicer long-term because you don't deal with token expiration, but the setup has more moving parts. Don't stress about it now — the PAT path works fine for years.
+
+After the first time, `git push` just works. No more prompts.
 
 ### `git pull`
 
@@ -154,15 +196,15 @@ Let's put this together by creating your portfolio repository:
 4. Check "Add a README file"
 5. Click "Create repository"
 
-Now clone it to your computer:
+Now clone it to your computer. Note that we clone directly into `~/guild-projects/`, not into a `portfolio/` subfolder — git creates the `guild-portfolio/` directory for you.
 
 ```
-cd ~/guild-projects/portfolio
+cd ~/guild-projects
 git clone https://github.com/YOUR-USERNAME/guild-portfolio.git
 cd guild-portfolio
 ```
 
-You now have a portfolio repository on GitHub connected to a folder on your computer. Everything you build and push will be publicly visible at `github.com/YOUR-USERNAME/guild-portfolio`.
+You now have a portfolio repository on GitHub connected to a folder on your computer at `~/guild-projects/guild-portfolio/`. Everything you build and push will be publicly visible at `github.com/YOUR-USERNAME/guild-portfolio`.
 
 ## When Things Go Wrong
 
@@ -176,13 +218,13 @@ Git can occasionally get into confusing states, especially when you're learning.
 
 Git has hundreds of features. You don't need these yet (and might never need them):
 
-- Branching and merging (useful later, not now)
+- Branching and merging — you'll need these starting in Phase 3 when the Workshop chapter has you contributing to shared codebases. The bridge chapter [Branches and Pull Requests](../02-the-methodology/03-branches-and-pull-requests.md) in Phase 2 teaches everything you need to know, and it's only three more commands on top of these seven. Come back to it when you get there.
 - Rebasing (even experienced developers argue about this)
 - Cherry-picking (you'll know when you need it)
 - Git hooks (automation for later)
 - Submodules (complexity you can avoid)
 
-The seven commands above are enough to track your work, share your portfolio, and participate in the guild. If you need more advanced git operations, your agent can walk you through them when the time comes.
+The seven commands above are enough to track your work through your first portfolio projects. If you need more advanced git operations, your agent can walk you through them when the time comes.
 
 ## The Takeaway
 

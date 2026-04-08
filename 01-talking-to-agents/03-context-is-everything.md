@@ -64,7 +64,7 @@ Preferences help the agent match your taste. Without them, the agent uses its de
 
 ## The Design Document as Context Anchor
 
-In the guild's methodology, every project starts with a design document. This isn't bureaucracy. It's a practical tool for context management. A good design doc contains all four types of context in one place:
+In the guild's methodology, every project starts with a **design document** (also called a design doc, DESIGN.md, or spec). This isn't bureaucracy. It's a practical tool for context management. A good design doc contains all four types of context in one place:
 
 - **Project context:** What you're building and why
 - **Technical context:** What technology you're using, what already exists
@@ -74,6 +74,63 @@ In the guild's methodology, every project starts with a design document. This is
 When you start a new conversation with an agent (or when the conversation gets long and you need to reset), you paste the design doc and say "here's the project I'm working on." The agent instantly has everything it needs. No twenty-message back-and-forth to re-establish what's going on.
 
 This is why the first step in our workflow is generating a design doc with the agent. It forces you to articulate context before you start building, and it creates a reusable artifact that keeps every subsequent conversation grounded.
+
+### What a Design Doc Actually Looks Like
+
+Enough description — here's a concrete example. This is roughly what a good design doc looks like for a small web project. It's written in Markdown (the same format as this chapter), lives in a file called `DESIGN.md` at the root of the project, and is short enough to read in two minutes.
+
+```markdown
+# Habit Tracker — Design Document
+
+## Purpose
+A personal tool for tracking daily habits (meditation, exercise, reading, etc.).
+Single user, no accounts needed. Runs in a web browser, data stays on the device.
+
+## Features
+1. Add a habit with a name and an optional daily target (e.g. "Read — 30 minutes")
+2. Mark a habit as done for today with one click
+3. Show a 7-day streak view: did I do this every day this week?
+4. Show a monthly calendar heat map of completion history
+5. Edit a habit's name or delete it
+
+## Technology
+- HTML, CSS, JavaScript (no frameworks)
+- Data stored in the browser's local storage as JSON
+- Single HTML file, no build step, no server
+
+## Interface
+- Clean, minimal, mobile-friendly
+- Habit list at the top, each row has the name, today's checkbox, and the 7-day streak
+- Calendar heat map below the list, showing the last 30 days across all habits
+- Add-habit form collapses to a "+" button when not in use
+
+## Constraints
+- Must work entirely offline after first load
+- Must persist data across browser refreshes
+- Must be readable on a phone screen (360px wide)
+
+## Out of Scope
+- User accounts, sharing, or sync across devices
+- Notifications or reminders
+- Import/export (could add later)
+- Habit categories or tags
+
+## Success Criteria (how I know it's done)
+- I can add, mark, edit, and delete habits without opening devtools
+- My data survives a full browser restart
+- I used it for three days straight and it didn't frustrate me
+```
+
+Notice what this design doc does:
+
+- **Names what's being built and for whom.** The Purpose section is a single paragraph. No jargon, no architecture diagrams, just the pitch.
+- **Lists features as a numbered list.** Each feature is short, specific, and testable.
+- **Specifies the technology.** The agent won't have to guess whether to use React.
+- **Describes the interface in words.** Not a pixel-perfect mockup, just enough that the agent knows the layout.
+- **Calls out constraints and out-of-scope items explicitly.** These are just as important as the features. "We're not doing accounts" prevents scope creep on every future conversation.
+- **Defines success criteria.** This is the bar you'll use to decide when the project is done, and it's the bar the adversarial reviewer will hold the finished project to.
+
+That's the format. When you hit the first build chapter in Phase 1, you'll write one like this for a bookmark manager. When you hit Phase 2, you'll write one for a Rust CLI issue tracker with different sections (no Interface, but a Commands section and a Data Model section). The structure adapts to the project; what stays constant is the discipline of writing it down before building.
 
 ## Context Over the Life of a Conversation
 

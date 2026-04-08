@@ -42,13 +42,26 @@ This is what professional software development looks like. Almost nobody starts 
 
 ## Getting Started
 
-### Clone the repo
+### Fork and clone the repo
+
+Contributing to an upstream repository you don't own follows the **fork-and-PR** model. You don't push commits directly to `Navigators-Guild/guild-toolkit`. Instead, you make your own copy (a fork), push your work there, and open a pull request asking the maintainers to pull your changes back.
+
+1. Go to [github.com/Navigators-Guild/guild-toolkit](https://github.com/Navigators-Guild/guild-toolkit) and click the **Fork** button in the top right. GitHub creates `github.com/YOUR-USERNAME/guild-toolkit` — your own copy with full push access.
+2. Clone **your fork**, not the upstream:
 
 ```
 cd ~/guild-projects
-git clone https://github.com/Navigators-Guild/guild-toolkit.git
+git clone https://github.com/YOUR-USERNAME/guild-toolkit.git
 cd guild-toolkit
 ```
+
+3. Add the upstream repo as a second remote so you can pull updates from the canonical copy:
+
+```
+git remote add upstream https://github.com/Navigators-Guild/guild-toolkit.git
+```
+
+Your `origin` is your fork (where you push). Your `upstream` is the canonical repo (where you pull updates from and open PRs to). Later, when you want to refresh your fork with new changes from upstream: `git fetch upstream && git checkout main && git merge upstream/main && git push`.
 
 ### Make sure it builds
 
@@ -99,7 +112,7 @@ Working on the toolkit isn't just coding. It follows a process:
 
 ### 1. Claim the work
 
-Check what issues exist on the repo. If someone is already working on the tool you want, pick a different one or find a sub-feature to work on. Use Chainlink to track your work as always.
+Check what issues exist on the repo. If someone is already working on the tool you want, pick a different one or find a sub-feature to work on. Use crosslink to track your work as always.
 
 ### 2. Read before you write
 
@@ -115,13 +128,15 @@ Same process as your portfolio projects. Start with the simplest useful version.
 
 ### 5. Submit a pull request
 
-When your feature is working and tested, submit a PR to the guild-toolkit repo. This is where you learn the PR process:
+When your feature is working and tested, submit a pull request (PR) to the guild-toolkit repo. If you haven't yet read the [Branches and Pull Requests](../02-the-methodology/03-branches-and-pull-requests.md) chapter from Phase 2, go do that first — it covers the three new git commands and the GitHub web workflow you'll use here. The short version:
 
-- Your PR description should explain what you built and why
+- Create a feature branch with `git checkout -b your-branch-name` before you start making changes
+- Commit your work on the branch as usual, then push it with `git push -u origin HEAD` the first time
+- Open the PR on github.com; the description should explain what you built and why
 - The CI must pass (tests, clippy, formatting)
 - Other guild members will review your code
-- You'll get feedback, possibly requests for changes
-- You address the feedback and the PR gets merged
+- Address feedback with new commits on the same branch (they show up in the PR automatically)
+- Once approved and green, a maintainer merges the PR and your code ships
 
 This is the first time your code goes through review by people other than your agent. It's the closest thing to the traditional apprentice-submits-work-to-the-master moment.
 

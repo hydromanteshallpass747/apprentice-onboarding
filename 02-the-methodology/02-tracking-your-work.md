@@ -115,68 +115,69 @@ This project teaches you several things the bookmark manager didn't:
 
 **Structured data and serialization.** Bookmarks were basically a URL and some text. Issues have structured data: a status with specific allowed values, a priority with a defined order, labels as a list, timestamps. And you're saving them to a JSON file, which means the data needs to be serialized (turned into text) and deserialized (turned back into structured data). This is a fundamental concept in all software.
 
-## Now Use a Real One: Chainlink
+## Now Use a Real One: crosslink
 
 You've built a tracker. You understand the concepts: issues, states, priorities, labels, filtering. You know why it matters and what it does.
 
-Now here's the tool you'll actually use going forward: **Chainlink**.
+Now here's the tool you'll actually use going forward: **crosslink**.
 
-Chainlink is a command-line issue tracker built specifically for AI-assisted development. It's designed by the guild, and it solves the exact problems you just learned about, plus several you haven't hit yet.
+crosslink is a command-line issue tracker built specifically for AI-assisted development. It solves the exact problems you just learned about, plus several you haven't hit yet.
 
 ### Why Not Just Use the One You Built?
 
 Your tracker is a learning project. It's great for understanding the concepts. But it's a web app you open in a browser, and it stores data in that browser's local storage. It can't talk to your agent. It can't inject context into a conversation. It can't survive a browser cache clear.
 
-Chainlink runs in your terminal (where your agent already lives), stores data in a local database file that travels with your project, and is designed from the ground up to bridge the gap between you and your AI agent.
+crosslink runs in your terminal (where your agent already lives), stores data in a local database file that travels with your project, and is designed from the ground up to bridge the gap between you and your AI agent.
 
-### Installing Chainlink
+### Installing crosslink
 
-If you have Rust's package manager installed:
+Rust and cargo are already installed from Phase 0, so the install is one command:
 ```
-cargo install chainlink-tracker
+cargo install crosslink
 ```
 
 Then initialize it in any project:
 ```
-chainlink init
+cd ~/guild-projects/guild-portfolio/bookmark-manager
+crosslink init
 ```
 
-That creates a `.chainlink/` folder in your project with a database, configuration, and a set of hooks. All your issues live there, local to the project, no cloud services, no accounts.
+That creates a `.crosslink/` folder in your project with a database, configuration, and a set of hooks. All your issues live there, local to the project, no cloud services, no accounts.
 
-If you don't have Rust installed yet, your agent can walk you through it. Or come back to this after you've done more projects. The concepts matter more than the specific tool right now.
+Verify it worked by running `crosslink --version`. You should see a version number. If you see "command not found" instead, close and reopen your terminal — `cargo install` drops binaries in `~/.cargo/bin/` and your shell needs to reload to find them.
 
 ### The Key Insight: The Agent Does the Tracking
 
-Here's what makes Chainlink different from a normal issue tracker: **you don't have to run the commands yourself.** When you run `chainlink init`, it sets up hooks that teach your AI agent how to use Chainlink. The agent reads the hooks, understands the system, and starts managing issues on its own.
+Here's what makes crosslink different from a normal issue tracker: **you don't have to run the commands yourself.** When you run `crosslink init`, it sets up hooks that teach your AI agent how to use crosslink. The agent reads the hooks, understands the system, and starts managing issues on its own.
 
 You tell the agent "I want to add a search feature." The agent:
-1. Creates an issue in Chainlink for the work
+1. Creates an issue in crosslink for the work
 2. Starts a session and marks that issue as active
 3. Breaks it into subissues if it's complex
 4. Adds comments as it works, documenting decisions and findings
 5. Closes the issue when it's done
 6. Leaves handoff notes for the next session
 
-You don't type `chainlink create` or `chainlink close`. The agent does. Your job is the same as it's always been: direct the work, verify the output, and make judgment calls. Chainlink just gives the agent a structured place to track everything it's doing, so nothing gets lost between conversations.
+You don't type `crosslink create` or `crosslink close`. The agent does. Your job is the same as it's always been: direct the work, verify the output, and make judgment calls. crosslink just gives the agent a structured place to track everything it's doing, so nothing gets lost between conversations.
 
 This is what it looks like in practice. You start a conversation with your agent and say "let's add search to the recipe app." Behind the scenes, the agent is doing this:
 
 ```
-chainlink session start
-chainlink quick "Add search feature to recipe app" -p medium -l feature
+crosslink session start
+crosslink quick "Add search feature to recipe app" -p medium -l feature
 # ... builds the feature ...
-chainlink comment 3 "Search filters by title and ingredient, real-time as user types"
-chainlink close 3
-chainlink session end --notes "Search is done. Tag filtering is next."
+crosslink issue comment 3 "Search filters by title and ingredient, real-time as user types"
+crosslink close 3
+crosslink session end --notes "Search is done. Tag filtering is next."
 ```
 
 You see the work happening. You test the result. You give feedback. The tracking is handled for you.
 
 ### The Concepts You Already Know
 
-Everything you learned building your tracker maps directly to what Chainlink is doing under the hood:
+Everything you learned building your tracker maps directly to what crosslink is doing under the hood:
 
-| Your Tracker | What the Agent Does in Chainlink |
+| Your Tracker | What the Agent Does in crosslink |
 |---|---|
 | Create issue button | Creates an issue before starting any work |
 | Status badges | Moves issues through open → in progress → closed |
@@ -187,7 +188,7 @@ Everything you learned building your tracker maps directly to what Chainlink is 
 
 Because you built a tracker, you understand what the agent is doing. It's not magic. It's the same concepts, automated.
 
-### What Chainlink Adds
+### What crosslink Adds
 
 Here's where it goes beyond what you built:
 
@@ -196,46 +197,46 @@ Here's where it goes beyond what you built:
 **Breadcrumbs.** During a long conversation, the agent drops breadcrumbs as it works:
 
 ```
-chainlink session action "Found the bug - it's in the token refresh logic"
+crosslink session action "Found the bug - it's in the token refresh logic"
 ```
 
 If the conversation gets long and the agent's context compresses (older messages get fuzzy), the breadcrumbs survive. They're in the tracker, not in the conversation. This is how you fight the entropy problem from the previous chapter.
 
-**Subissues.** Remember the bead-string from VDD? Chainlink supports it directly. When the agent encounters a big task, it breaks it down:
+**Subissues.** Remember the bead-string from VDD? crosslink supports it directly. When the agent encounters a big task, it breaks it down:
 
 ```
-chainlink create "Add user authentication" -p high
-chainlink subissue 1 "Create login form"
-chainlink subissue 1 "Add password hashing"
-chainlink subissue 1 "Build session management"
+crosslink create "Add user authentication" -p high
+crosslink subissue 1 "Create login form"
+crosslink subissue 1 "Add password hashing"
+crosslink subissue 1 "Build session management"
 ```
 
-Issue #1 is the epic. The subissues are the beads. You can see the whole hierarchy with `chainlink tree`.
+Issue #1 is the epic. The subissues are the beads. You can see the whole hierarchy with `crosslink issue tree`.
 
 **Dependencies.** Sometimes one issue blocks another. The agent tracks this:
 
 ```
-chainlink block 5 3
+crosslink issue block 5 3
 ```
 
-Issue #5 is blocked by issue #3. `chainlink ready` shows only the issues with no blockers, so the agent (and you) always know what can be worked on right now.
+Issue #5 is blocked by issue #3. `crosslink issue ready` shows only the issues with no blockers, so the agent (and you) always know what can be worked on right now.
 
-**Smart suggestions.** The agent can ask Chainlink what to do next:
+**Smart suggestions.** The agent can ask crosslink what to do next:
 
 ```
-chainlink next
+crosslink issue next
 ```
 
-Chainlink looks at priorities, dependencies, and progress, and recommends the next thing to pick up.
+crosslink looks at priorities, dependencies, and progress, and recommends the next thing to pick up.
 
 ### What You Actually Do
 
-Your daily workflow with Chainlink is simple because most of it is automatic:
+Your daily workflow with crosslink is simple because most of it is automatic:
 
-1. **Start a conversation with your agent.** The agent reads the Chainlink state and knows where things stand.
+1. **Start a conversation with your agent.** The agent reads the crosslink state and knows where things stand.
 2. **Tell it what you want to work on.** "Let's tackle the filtering next" or "there's a bug where search doesn't clear properly."
 3. **Review the output.** The agent builds, you verify. Same as always.
-4. **Check the tracker when you want the big picture.** `chainlink list` shows all open issues. `chainlink tree` shows the hierarchy. These are read-only commands you can run yourself anytime to see the state of the project.
+4. **Check the tracker when you want the big picture.** `crosslink list` shows all open issues. `crosslink issue tree` shows the hierarchy. These are read-only commands you can run yourself anytime to see the state of the project.
 
 The agent handles the bookkeeping. You handle the direction and quality control. That's the division of labor.
 
@@ -256,8 +257,8 @@ This is the tracking layer of VDD. The beads on the string. Every piece of work 
 
 2. Once your tracker is built, use it to track the remaining work on itself. Create issues for any features you skipped or bugs you found during testing. This is delightfully meta, and it proves the tool works.
 
-3. Install Chainlink in one of your existing projects. Then ask your agent to make an improvement to the project. Watch how the agent creates issues, tracks its work, and leaves handoff notes without you having to manage any of it. Run `chainlink list` and `chainlink tree` to see what the agent built up.
+3. Install crosslink in one of your existing projects. Then ask your agent to make an improvement to the project. Watch how the agent creates issues, tracks its work, and leaves handoff notes without you having to manage any of it. Run `crosslink list` and `crosslink issue tree` to see what the agent built up.
 
-4. Start a new conversation with your agent in a Chainlink-enabled project. Don't give it any context. Just say "check where we left off and let's keep going." See how quickly it picks up the thread from the handoff notes and issue list. Compare this to the old approach of typing a paragraph of context every time.
+4. Start a new conversation with your agent in a crosslink-enabled project. Don't give it any context. Just say "check where we left off and let's keep going." See how quickly it picks up the thread from the handoff notes and issue list. Compare this to the old approach of typing a paragraph of context every time.
 
 5. Submit your issue tracker for adversarial review. The roast for this one will be interesting, because your reviewers are people who *use* issue trackers every day. They'll have opinions.

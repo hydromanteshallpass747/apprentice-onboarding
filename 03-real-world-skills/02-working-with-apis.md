@@ -33,7 +33,7 @@ This is the preferred approach for agentic development because:
 
 **Setting up an MCP server** is usually straightforward. Here's a concrete example using the filesystem MCP server, which gives your agent the ability to read and write files in a specified directory:
 
-**Step 1: Install the server.**
+**Step 1: Install the server.** MCP servers are usually distributed through npm, Node.js's package manager (installed back in Phase 0 — if `npm --version` doesn't work, go reinstall from [nodejs.org](https://nodejs.org)). The `-g` flag means "global" — install it system-wide so the command is available everywhere.
 ```
 npm install -g @modelcontextprotocol/server-filesystem
 ```
@@ -94,13 +94,78 @@ Regardless of which approach you use, a few concepts come up every time you work
 
 Many (but not all) APIs require authentication. Usually this means an **API key**: a long string of characters that identifies you to the service. The service uses it to track usage, enforce rate limits, and bill you if it's a paid API.
 
-The critical rule: **never put API keys in your code.** Not in a variable, not in a config file that gets committed to git, not anywhere that could end up visible. API keys go in environment variables or in a local secrets file that's listed in `.gitignore`.
+The critical rule: **never put API keys in your code.** Not in a variable, not in a config file that gets committed to git, not anywhere that could end up visible. API keys go in environment variables or in a local secrets file that's listed in `.gitignore`. The rest of this section walks through what environment variables are, how to set one, and how to get a GitHub Personal Access Token as a concrete example.
+
+#### What an environment variable is
+
+An environment variable is a named value your operating system stores in memory and hands out to any program that asks. Programs ask for them by name. When you run a Rust tool that wants `GITHUB_TOKEN`, the tool asks the OS "do you have a value for GITHUB_TOKEN?" and the OS either returns the string or says no. Environment variables live outside your source code, so they don't end up in git.
+
+You can see the environment variables your current shell knows about:
+
+```
+# On Mac/Linux (bash, zsh):
+printenv
+
+# On Windows PowerShell:
+Get-ChildItem Env:
+```
+
+Scroll through the output. You'll see entries like `PATH`, `HOME`, `USER`, and a few dozen others your OS set up automatically. Adding your own works the same way as the built-ins.
+
+#### Setting an environment variable
+
+There are two scopes: **session-only** (disappears when you close the terminal) and **persistent** (survives reboots).
+
+**Session-only (for quick testing):**
+
+```
+# Mac/Linux:
+export GITHUB_TOKEN="ghp_yourActualTokenHere"
+
+# Windows PowerShell:
+$env:GITHUB_TOKEN = "ghp_yourActualTokenHere"
+```
+
+This value exists only in this terminal window. Open a new terminal and it's gone. That's fine when you're experimenting.
+
+**Persistent (for real use):** Edit your shell's config file so the variable gets set automatically every time a terminal starts.
+
+- **Mac/Linux with bash:** Add the `export` line to `~/.bashrc` (or `~/.bash_profile` on some systems).
+- **Mac/Linux with zsh** (the default on modern macOS): Add the `export` line to `~/.zshrc`.
+- **Windows PowerShell:** Edit your PowerShell profile (run `notepad $PROFILE` to open it, create it if prompted), and add the `$env:` line.
+
+After editing the config file, close and reopen your terminal. Verify the variable is set with `echo $GITHUB_TOKEN` (Mac/Linux) or `echo $env:GITHUB_TOKEN` (PowerShell). If you see your token, it worked.
+
+**Never** paste a token into a file that gets committed to git. If your shell config file itself lives in git (some people do that for "dotfile" repos), use a separate untracked file instead.
+
+#### Getting a GitHub Personal Access Token
+
+You already have a GitHub account from Phase 0. A Personal Access Token (PAT) is a long string you generate on GitHub that acts like a limited-scope password for the API. You created one of these back in Phase 0 for `git push` authentication — you can reuse that token here, or create a separate one labeled for API use. Separate is better because you can revoke one without breaking the other.
+
+1. Sign in to [github.com](https://github.com).
+2. Click your profile picture → **Settings** → **Developer settings** (bottom of the left sidebar) → **Personal access tokens** → **Tokens (classic)**.
+3. **Generate new token** → **Generate new token (classic)**.
+4. Name it something like "build-check CLI" and pick an expiration.
+5. Under scopes, check `repo` (read and write access to your repositories). For read-only tools, the more restrictive `public_repo` is enough.
+6. **Generate token** — copy the string starting with `ghp_` immediately. GitHub shows it once.
+7. Set it as an environment variable using the commands above.
+
+#### Telling the agent to read from the environment
 
 When working with your agent, be explicit about this:
 
 > "Store the API key in an environment variable called WEATHER_API_KEY. Never hardcode it. Read it at runtime and fail with a clear error message if it's not set."
 
-Your agent knows this practice, but stating it explicitly ensures it doesn't take shortcuts and if you arent explicit it might leak your secrets. 
+In Rust, the agent will typically do this with `std::env::var("WEATHER_API_KEY")`, which returns either the value or an error you can handle. Your agent knows this practice, but stating it explicitly ensures it doesn't take shortcuts. If you aren't explicit, it might hardcode the key to make testing easier and then forget to remove it — and suddenly your token is in git history.
+
+#### .env files as a middle ground
+
+Some projects use a `.env` file in the project root to hold environment variables for development — one key per line, like `GITHUB_TOKEN=ghp_...`. A library like `dotenvy` (Rust) or `dotenv` (Node.js) loads the file at program startup. This is convenient because you don't have to export anything manually, and different projects can have different values.
+
+**Critical rule if you use .env files:** add `.env` to your `.gitignore` on day one. Commit a `.env.example` file with placeholder values so other contributors know what variables the project expects. Never, ever commit the real `.env`. A leaked `.env` in a public repo is the most common way API keys get stolen.
+
+If any of this is ever unclear, the Security chapter later in Phase 3 has more on why this matters and how to recover if you accidentally commit a secret.
+
 
 ### Rate Limits
 

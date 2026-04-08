@@ -58,6 +58,51 @@ One last mental model: software lives in files, and those files live in folders 
 
 You'll see these files in your projects. You won't need to write them by hand (the agent creates them), but you should be comfortable with the idea that a project is a collection of files working together, not a single monolithic thing. When something goes wrong, it's usually in a specific file, and being able to say "the problem seems to be with the booking form, not the homepage" helps the agent fix it way faster than "it's broken."
 
+## Data Formats You'll See: JSON
+
+One file format is worth knowing by sight because it shows up everywhere in modern software: **JSON** (pronounced "jay-sawn," short for JavaScript Object Notation). JSON is a way to write down structured data — lists, names, numbers, nested groups — as plain text that both humans and programs can read.
+
+You'll see JSON in three places during this curriculum: files your apps use to store data, configuration files like `.mcp.json`, and error messages when something parsing JSON fails. You don't need to write JSON by hand — your agent will produce it — but you need to recognize it and spot when it's broken.
+
+Here's what JSON looks like:
+
+```json
+{
+  "title": "Bookmark Manager",
+  "version": 1,
+  "authors": ["doll", "maxine"],
+  "settings": {
+    "dark_mode": true,
+    "max_bookmarks": 500
+  },
+  "tags": []
+}
+```
+
+The pieces:
+
+- **Curly braces `{ }`** wrap an object (a collection of key-value pairs).
+- **Square brackets `[ ]`** wrap a list (called an "array").
+- **Keys** are always strings in double quotes (`"title"`).
+- **Values** can be strings in double quotes (`"Bookmark Manager"`), numbers without quotes (`1`, `500`), booleans without quotes (`true`, `false`), lists (`["doll", "maxine"]`), or nested objects (the `settings` section).
+- **Commas** separate items in a list or key-value pairs in an object. Notice there is **no comma after the last item**. This is the #1 cause of JSON errors.
+- **Colons** separate keys from their values.
+
+Here's the same data with a mistake — a trailing comma after `"max_bookmarks": 500`:
+
+```json
+{
+  "settings": {
+    "dark_mode": true,
+    "max_bookmarks": 500,
+  }
+}
+```
+
+JSON parsers will refuse to read this file and will produce an error like `Unexpected token } at line 4`. The fix is to delete the trailing comma. Other common JSON errors: missing quotes around a key, single quotes instead of double quotes (JSON only accepts double), and unmatched brackets.
+
+**A sibling format you'll see later: YAML.** CI configuration files like `.github/workflows/ci.yml` are YAML, not JSON. YAML conveys the same kind of data but uses indentation instead of braces and brackets. You don't need to learn YAML syntax now; when you hit it in Phase 3, recognize that it's structured data like JSON but laid out differently.
+
 ## The Takeaway
 
 Code is not magic. It's instructions that store information, make decisions, repeat actions, and communicate. Software has layers: interface, logic, data, and connections. Projects live in files and folders.

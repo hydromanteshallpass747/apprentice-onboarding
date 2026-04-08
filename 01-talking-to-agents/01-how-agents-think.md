@@ -48,7 +48,7 @@ Just as important is knowing where agents fall short, so you can compensate:
 
 **Knowing what you actually want.** The agent has zero insight into your goals, preferences, and constraints beyond what you tell it. It won't ask "wait, who is this for?" or "have you considered that your users might need accessibility features?" unless you've set up that expectation. You're the one who brings domain knowledge and judgment.
 
-**Saying "I don't know."** Agents will almost always give you *an* answer. Even when the correct answer is "this can't be done" or "I'm not sure," the agent might generate a plausible-sounding response that's wrong. This is why VDD exists. You define success criteria upfront and check the result against them, rather than trusting the agent's confidence.
+**Saying "I don't know."** Agents will almost always give you *an* answer. Even when the correct answer is "this can't be done" or "I'm not sure," the agent might generate a plausible-sounding response that's wrong. This is why **VDD** (Verification Driven Development) exists. You define success criteria upfront and check the result against them, rather than trusting the agent's confidence. The full methodology is covered in Phase 2.
 
 **Understanding your specific environment.** The agent doesn't know what operating system you're on, what other software you have installed, what version of things you're running, or what your file structure looks like. Unless you tell it. When things don't work, missing context is often the reason.
 

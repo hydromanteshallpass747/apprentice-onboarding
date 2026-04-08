@@ -34,7 +34,7 @@ On your own. You've seen enough design docs at this point to know the format. De
 
 ### 3. Decompose and Track
 
-Break the project down using Chainlink. Epics, issues, sub-issues. The full bead-string. Every piece of work tracked, every decision documented. This isn't just for you. It's part of what evaluators review.
+Break the project down using crosslink. Epics, issues, sub-issues. The full bead-string. Every piece of work tracked, every decision documented. This isn't just for you. It's part of what evaluators review.
 
 ### 4. Build
 

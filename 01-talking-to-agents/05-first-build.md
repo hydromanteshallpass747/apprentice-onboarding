@@ -71,7 +71,7 @@ Save this as `DESIGN.md` in your project folder.
 In your terminal:
 
 ```
-cd ~/guild-projects/portfolio/guild-portfolio
+cd ~/guild-projects/guild-portfolio
 mkdir bookmark-manager
 cd bookmark-manager
 ```
@@ -94,7 +94,7 @@ The agent will generate code. Save it as `index.html` in your bookmark-manager f
 
 ## Step 4: Verify
 
-Open the file in your browser (double-click it, or in VS Code right-click and select "Open with Live Server" if you installed that extension).
+Open the file in your browser. The easiest way: in the VS Code Explorer panel, right-click `index.html` and choose **Open with Live Server**. A new browser tab opens showing your page, and it will auto-reload every time you save the file. (Live Server was installed back in Phase 0 as one of the three recommended extensions. If you skipped that step, install it now: Extensions panel → search "Live Server" → install.)
 
 Now test it against the core requirements:
 
@@ -165,7 +165,7 @@ This document is part of your portfolio. Reviewers will read it. It's the eviden
 ## Step 7: Commit and Push
 
 ```
-cd ~/guild-projects/portfolio/guild-portfolio/bookmark-manager
+cd ~/guild-projects/guild-portfolio/bookmark-manager
 git add .
 git commit -m "Complete bookmark manager - first portfolio project"
 git push
@@ -175,14 +175,48 @@ Your project is now live on GitHub. The code, the design doc, and the process do
 
 ## Step 8: Submit for Adversarial Review
 
-Post your project in the guild's adversarial review channel. Include:
-- A link to your GitHub repository
-- A brief description of what you built
-- An invitation for honest feedback
+Adversarial review is the core of the methodology — it's what takes your "I built a thing" project and turns it into "I built a thing and then fought with it until it was actually good." For your first build, you're going to get that review from an AI adversary, which is how the curriculum works today (see [00-foundations/06-the-guild.md](../00-foundations/06-the-guild.md) for the full explanation of why). When the guild's community review channel is live, you'll be able to submit to live reviewers as well, but the AI adversary is the default and it works well.
 
-Then wait. The roasts will come. Some will be about functionality ("what happens if you paste a URL without https://? Does it break?"). Some about design ("the contrast between your text and background isn't accessible enough"). Some about your process ("your design doc says no import/export, but that would actually be trivial to add and really useful").
+**Step 8a: Push everything.** Make sure your latest code, your DESIGN.md, and your PROCESS.md are all committed and pushed to GitHub:
 
-All of it is valuable. Take notes on every piece of feedback. Then go back, fix what needs fixing, improve what could be better, and commit your changes with messages like "Address review feedback: add URL validation" and "Improve contrast ratio for accessibility."
+```
+git status
+git add .
+git commit -m "Prepare bookmark manager for review"
+git push
+```
+
+Your project should be publicly visible at `github.com/YOUR-USERNAME/guild-portfolio/tree/main/bookmark-manager`.
+
+**Step 8b: Open a fresh conversation.** Don't use the same conversation you built the project in. A builder and an adversary should not share context. Open a new tab/conversation with your agent.
+
+**Step 8c: Give the adversary its role.** Paste a prompt like this, with the bracketed pieces filled in:
+
+> "You are an adversarial reviewer. Your job is to find every weakness, bug, edge case, missing validation, unclear error message, inconsistent naming, security vulnerability, accessibility problem, and documentation gap in the work below. Be specific and harsh. Cite file names and line numbers where you can. Do not soften your critique. Do not add compliments. Assume the person who wrote this is strong enough to hear the truth and fix it.
+>
+> The project is a personal bookmark manager built as a first portfolio project. Here is the design document: [paste DESIGN.md contents]. Here is the full source: [paste index.html]. Here is the process log: [paste PROCESS.md]. Produce the review."
+
+**Step 8d: Read the whole thing before reacting.** The roasts will come. Some will be about functionality ("what happens if you paste a URL without https://? Does it break?"). Some about design ("the contrast between your text and background isn't accessible enough"). Some about your process ("your design doc says no import/export, but that would actually be trivial to add and really useful"). Read it all, breathe, then re-read [the Forward](../FORWARD.md) if you need the reminder on why this isn't personal.
+
+**Step 8e: Triage the feedback.** In your PROCESS.md, create a section called `## Review 1` and for every point the adversary raised, write:
+- The critique (paraphrase is fine)
+- Your assessment: valid / invalid / partially valid, with one sentence of reasoning
+- If valid: what you're going to do about it
+
+Not every critique will be worth addressing. AI adversaries sometimes reach — that's fine, it's part of the exit signal (see the VDD chapter). Your job is honest evaluation, not blind obedience.
+
+**Step 8f: Fix and commit.** Go back and address the valid critiques. Each fix gets its own commit with a descriptive message:
+
+```
+git commit -m "Address review feedback: add URL validation"
+git commit -m "Improve contrast ratio for accessibility"
+```
+
+Push when you're done.
+
+**Step 8g: Second pass (optional but recommended).** Open another fresh conversation, give the same adversarial reviewer prompt with the updated code, and see what it finds now. A second pass often catches things the first one missed and verifies your fixes actually landed. Two or three passes is usually enough — you'll hit the point where the adversary is reaching for nitpicks, which is the exit signal.
+
+**Step 8h: When the community channel is live.** Once the guild has active human reviewers, the same submission format works: link to your GitHub repo, a brief description of what you built, a note on what you specifically want roasted, and a link to your AI-adversary review history so reviewers can see what's already been addressed. Having already run AI adversarial passes makes human review feedback tighter and more valuable, because it filters out the obvious issues.
 
 This cycle (build, review, refine) is the heart of the guild methodology. Your first time through will feel intense. By your third project, it'll feel natural.
 
@@ -190,7 +224,7 @@ This cycle (build, review, refine) is the heart of the guild methodology. Your f
 
 The walkthrough above makes it sound like a straight line. It won't be. Here's what actually happens and what to do about it.
 
-**The agent gives you code that doesn't work at all.** The HTML page is blank, or shows an error in the browser console. Don't start over. Open your browser's developer tools (right-click the page, click "Inspect," then click the "Console" tab). If there are red error messages, copy them. Share the error and the code with your agent:
+**The agent gives you code that doesn't work at all.** The HTML page is blank, or shows an error in the browser console. Don't start over. Open your browser's developer tools (press **F12** or right-click → **Inspect**, then click the **Console** tab — if this is new to you, the [devtools mini-guide in Phase 0](../00-foundations/04-your-workspace.md#opening-the-browsers-developer-tools) has the full walkthrough). If there are red error messages, copy them. Share the error and the code with your agent:
 
 > "The page is blank. Here's the console error: [paste]. Here's the current code: [paste]. Fix it."
 

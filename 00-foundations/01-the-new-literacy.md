@@ -68,4 +68,6 @@ Then in Phase 1, you'll start talking to agents and build your first project. By
 
 You already have everything you need to start. You can think. You can communicate. You can tell when something works and when it doesn't. Everything else is practice.
 
+**One last heads-up before you start.** You'll see references to "the guild," "the guild channel," and "guild reviewers" throughout this curriculum. The guild is a real community, but pieces of its infrastructure are still being built. [The Guild chapter](06-the-guild.md) at the end of Phase 0 explains exactly what that means, what exists today, and how you participate right now using tools you already have. You don't need to read it this second, but do read it before Phase 1 so the later references make sense.
+
 Let's go.

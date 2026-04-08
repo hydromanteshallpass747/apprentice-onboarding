@@ -92,7 +92,7 @@ You already use clippy for code quality. Some clippy lints are security-relevant
 
 ### Putting it together
 
-> "Add a security check target to our workflow. It should run cargo audit, cargo deny check, and cargo clippy -- -D warnings. All three must pass before we consider the code ready to ship."
+> "Add a security check job to our GitHub Actions workflow (the `.github/workflows/ci.yml` file — see the Shipping It chapter if you haven't set one up yet). It should run cargo audit, cargo deny check, and cargo clippy -- -D warnings. All three must pass before we consider the code ready to ship."
 
 ## Adversarial Security Review
 

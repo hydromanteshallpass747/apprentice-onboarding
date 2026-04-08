@@ -66,7 +66,7 @@ Some languages are built for specific problem areas:
 
 In the real world, language choice is driven by a few factors:
 
-**What are you building?** A mobile app narrows the options (Swift for iOS, Kotlin for Android). A web frontend means JavaScript. A CLI tool could be almost anything. A data pipeline probably means Python. The problem often picks the language for you.
+**What are you building?** A mobile app narrows the options (Swift for iOS, Kotlin for Android). A web frontend means JavaScript. A CLI tool (**command-line interface** — a program you run by typing its name in the terminal, like `git` or `cargo`) could be almost anything. A data pipeline probably means Python. The problem often picks the language for you.
 
 **What does your team use?** If you're joining a project or working with other people, you use what they use. This isn't up for debate in most workplaces. You use the stack that exists.
 

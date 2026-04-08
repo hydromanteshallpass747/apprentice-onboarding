@@ -70,7 +70,7 @@ Your portfolio README should tell your story. Not a resume. A narrative. When yo
 
 Your portfolio is reviewed by **two guild journeymen or masters** who have completed the path themselves. They review independently, then compare notes. This isn't a faceless committee. You'll know who your reviewers are, and they'll know you from the guild community.
 
-The review takes about a week. Reviewers read your design docs, look at your code and commit history, check your test coverage, read your retrospectives, and look at your Chainlink issue history. They write up feedback covering strengths, areas for improvement, and a recommendation.
+The review takes about a week. Reviewers read your design docs, look at your code and commit history, check your test coverage, read your retrospectives, and look at your crosslink issue history. They write up feedback covering strengths, areas for improvement, and a recommendation.
 
 There's no numerical score or letter grade. The recommendation is one of three outcomes:
 
